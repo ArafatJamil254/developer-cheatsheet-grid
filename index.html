@@ -3,36 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Git & Terminal Cheatsheet</title>
+  <title>Git &amp; Terminal Cheatsheet | Developer Reference</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="app-container">
+  <div class="cheatsheet-container">
     <header class="header">
-      <span class="badge">Web Project</span>
-      <h1>Git & Terminal Cheatsheet</h1>
-      <p class="subtitle">Clean reference cheatsheet grid organizing essential terminal and git commands.</p>
+      <div class="header-badge">Terminal Reference</div>
+      <h1>Git &amp; Command Line Cheatsheet</h1>
+      <p class="subtitle">Quick reference guide for everyday Git workflows and shell commands.</p>
+
+      <div class="search-bar-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search commands, flags, or descriptions (e.g. branch, stash, commit)..." autocomplete="off">
+        <button id="clearSearchBtn" class="clear-btn" aria-label="Clear search">&times;</button>
+      </div>
+
+      <nav class="category-nav" id="categoryNav">
+        <button class="cat-pill active" data-filter="all">All</button>
+        <button class="cat-pill" data-filter="git-basics">Git Basics</button>
+        <button class="cat-pill" data-filter="branching">Branching</button>
+        <button class="cat-pill" data-filter="remotes">Remotes</button>
+        <button class="cat-pill" data-filter="inspect">Inspection</button>
+        <button class="cat-pill" data-filter="undo">Undo &amp; Stash</button>
+      </nav>
     </header>
 
-    <main class="content-card">
-      <div class="card-inner">
-        <h2>Interactive Showcase</h2>
-        <p>A responsive component implemented with clean architecture and modern web standards.</p>
-        
-        <div class="action-row">
-          <button class="btn btn-primary" id="actionBtn">Interact</button>
-          <span class="counter-display" id="counterText">Clicked: 0 times</span>
+    <main class="grid-container" id="cardsGrid">
+      <!-- Git Basics -->
+      <section class="card" data-category="git-basics">
+        <div class="card-header">
+          <span class="card-tag tag-blue">Git Basics</span>
+          <h2>Setup &amp; Staging</h2>
         </div>
-      </div>
+        <ul class="command-list">
+          <li class="command-item">
+            <div class="code-row">
+              <code>git init</code>
+              <button class="copy-btn" data-copy="git init" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Initialize a brand new local repository in current folder.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git status -s</code>
+              <button class="copy-btn" data-copy="git status -s" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Display working directory status in compact short format.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git add .</code>
+              <button class="copy-btn" data-copy="git add ." title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Stage all changed, modified, and newly created files.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git commit -m "feat: message"</code>
+              <button class="copy-btn" data-copy="git commit -m &quot;feat: message&quot;" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Commit staged changes with a descriptive commit message.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Branching -->
+      <section class="card" data-category="branching">
+        <div class="card-header">
+          <span class="card-tag tag-purple">Branching</span>
+          <h2>Branches &amp; Merging</h2>
+        </div>
+        <ul class="command-list">
+          <li class="command-item">
+            <div class="code-row">
+              <code>git switch -c &lt;branch&gt;</code>
+              <button class="copy-btn" data-copy="git switch -c new-feature" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Create a new branch and immediately switch into it.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git branch -a</code>
+              <button class="copy-btn" data-copy="git branch -a" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">List all local and remote tracking branches.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git merge &lt;branch&gt;</code>
+              <button class="copy-btn" data-copy="git merge feature-branch" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Merge specified branch into your current active branch.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git branch -d &lt;branch&gt;</code>
+              <button class="copy-btn" data-copy="git branch -d branch-name" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Safely delete a branch that has already been merged.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Remotes -->
+      <section class="card" data-category="remotes">
+        <div class="card-header">
+          <span class="card-tag tag-green">Remotes</span>
+          <h2>Sync &amp; GitHub</h2>
+        </div>
+        <ul class="command-list">
+          <li class="command-item">
+            <div class="code-row">
+              <code>git clone &lt;repo-url&gt;</code>
+              <button class="copy-btn" data-copy="git clone https://github.com/user/repo.git" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Download an existing remote repository to local machine.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git remote -v</code>
+              <button class="copy-btn" data-copy="git remote -v" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">List all configured remote origin URLs and fetch/push targets.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git push -u origin main</code>
+              <button class="copy-btn" data-copy="git push -u origin main" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Push local commits and set upstream tracking branch.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git pull --rebase</code>
+              <button class="copy-btn" data-copy="git pull --rebase" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Fetch and replay local commits on top of incoming remote branch.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Inspection -->
+      <section class="card" data-category="inspect">
+        <div class="card-header">
+          <span class="card-tag tag-orange">Inspection</span>
+          <h2>History &amp; Diffs</h2>
+        </div>
+        <ul class="command-list">
+          <li class="command-item">
+            <div class="code-row">
+              <code>git log --oneline --graph</code>
+              <button class="copy-btn" data-copy="git log --oneline --graph --decorate -n 10" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Visual compact representation of branch history and commits.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git diff --staged</code>
+              <button class="copy-btn" data-copy="git diff --staged" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Show line-by-line differences of staged changes ready to commit.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git show HEAD</code>
+              <button class="copy-btn" data-copy="git show HEAD" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Inspect metadata and full unified diff of the most recent commit.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git blame &lt;file&gt;</code>
+              <button class="copy-btn" data-copy="git blame filename.js" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Show author, timestamp, and commit hash for each line of a file.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Undo & Stash -->
+      <section class="card" data-category="undo">
+        <div class="card-header">
+          <span class="card-tag tag-red">Undo &amp; Stash</span>
+          <h2>Safe Reverts</h2>
+        </div>
+        <ul class="command-list">
+          <li class="command-item">
+            <div class="code-row">
+              <code>git stash push -m "wip"</code>
+              <button class="copy-btn" data-copy="git stash push -m &quot;wip&quot;" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Temporarily shelve uncommitted work to give you a clean tree.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git stash pop</code>
+              <button class="copy-btn" data-copy="git stash pop" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Restore previously stashed changes and remove from stash list.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git restore --staged &lt;file&gt;</code>
+              <button class="copy-btn" data-copy="git restore --staged ." title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Unstage file modifications without losing your actual edits.</p>
+          </li>
+          <li class="command-item">
+            <div class="code-row">
+              <code>git commit --amend --no-edit</code>
+              <button class="copy-btn" data-copy="git commit --amend --no-edit" title="Copy command">Copy</button>
+            </div>
+            <p class="cmd-desc">Add newly staged changes directly into the previous commit.</p>
+          </li>
+        </ul>
+      </section>
     </main>
 
+    <div class="no-results" id="noResults" style="display: none;">
+      <p>No matching commands found. Try searching for a different keyword or filter.</p>
+    </div>
+
     <footer class="footer">
-      <p>Built with HTML5, CSS Grid, Monospace Typography &bull; 2026</p>
+      <p>Built with semantic HTML5, CSS Grid &amp; Vanilla JavaScript &bull; Press <kbd>/</kbd> to quickly focus search.</p>
     </footer>
   </div>
+
+  <div class="toast" id="toast">Copied to clipboard! ✓</div>
   <script src="script.js"></script>
 </body>
 </html>
